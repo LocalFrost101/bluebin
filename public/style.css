@@ -1,0 +1,42 @@
+body {
+  background-color: #e6f0ff;
+  color: #003366;
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+h1 {
+  color: #004080;
+}
+
+textarea, input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  font-family: monospace;
+  border: 1px solid #004080;
+  background-color: #f5fbff;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #0059b3;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #004080;
+}
+
+pre {
+  background: #f5fbff;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
