@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "api/index.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/paste/(.*)", "dest": "api/index.js" },
+    { "src": "/raw/(.*)", "dest": "api/index.js" },
+    { "src": "/create", "methods": ["POST"], "dest": "api/index.js" },
+    { "src": "/", "dest": "api/index.js" }
+  ]
+}
