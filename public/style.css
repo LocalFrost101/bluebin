@@ -1,42 +1,66 @@
 body {
-  background-color: #e6f0ff;
-  color: #003366;
-  font-family: sans-serif;
+  background: linear-gradient(135deg, #e6f0ff 0%, #cce0ff 100%);
+  color: #00264d;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
   padding: 20px;
+  margin: 0;
 }
 
 h1 {
-  color: #004080;
+  color: #0052cc;
+  text-shadow: 0 2px 8px #b3c6ff;
+}
+
+form label {
+  display: block;
+  margin-bottom: 4px;
+  color: #003366;
 }
 
 textarea, input[type="password"] {
   width: 100%;
   padding: 10px;
   font-family: monospace;
-  border: 1px solid #004080;
+  border: 1.5px solid #0052cc;
   background-color: #f5fbff;
   margin-bottom: 10px;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
 button {
-  background-color: #0059b3;
+  background: linear-gradient(90deg, #0052cc 0%, #0073e6 100%);
   color: white;
-  padding: 10px 15px;
+  padding: 12px 20px;
   border: none;
   cursor: pointer;
   border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.2s;
 }
 
-button:hover {
-  background-color: #004080;
+button:hover, button:focus {
+  background: linear-gradient(90deg, #004080 0%, #0059b3 100%);
+  outline: none;
 }
 
 pre {
   background: #f5fbff;
   padding: 15px;
-  border: 1px solid #ccc;
+  border: 1.5px solid #0052cc;
   border-radius: 4px;
   white-space: pre-wrap;
   word-break: break-word;
+  font-size: 1.1em;
+}
+
+a {
+  color: #0052cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
 }
