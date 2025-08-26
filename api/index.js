@@ -6,7 +6,8 @@ const fs = require('fs');
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json()); // If you ever need JSON parsing
+app.use(express.json());
+// STATIC middleware to serve files from /public
 app.use(express.static(path.join(__dirname, '../public')));
 
 const pastes = {};  // In-memory store: { id: { content, pin } }
