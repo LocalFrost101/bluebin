@@ -6,6 +6,7 @@ const fs = require('fs');
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // If you ever need JSON parsing
 app.use(express.static(path.join(__dirname, '../public')));
 
 const pastes = {};  // In-memory store: { id: { content, pin } }
@@ -32,17 +33,23 @@ app.get('/', (req, res) => {
 app.post('/create', (req, res) => {
   const content = req.body.content;
   const pin = req.body.pin || '';
+  if (!content || typeof content !== 'string' || content.trim().length === 0) {
+    return res.status(400).send('Content cannot be empty. <a href="/">Go Back</a>');
+  }
+  if (pin && (pin.length > 4 || !/^\d{1,4}$/.test(pin))) {
+    return res.status(400).send('PIN must be up to 4 digits. <a href="/">Go Back</a>');
+  }
   const id = nanoid(8);
 
   pastes[id] = { content, pin };
 
-  // Send Discord webhook with link only
+  // Send Discord webhook with correct "Private" status
   if (WEBHOOK_URL) {
     fetch(WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        content: `📄 New Bluebin paste created.\n🔒 Private: true\n🔗 https://${process.env.VERCEL_URL || 'yourdomain.com'}/paste/${id}`
+        content: `📄 New Bluebin paste created.\n🔒 Private: ${!!pin}\n🔗 https://${process.env.VERCEL_URL || req.headers.host}/paste/${id}`
       })
     }).catch(() => {});
   }
