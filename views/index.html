@@ -7,8 +7,10 @@
 <body>
   <h1> Bluebin - Create a Private Paste</h1>
   <form method="POST" action="/create">
-    <textarea name="content" placeholder="Paste your text here..." required></textarea><br><br>
-    <input type="password" name="pin" maxlength="4" placeholder="4-digit PIN (optional)"><br><br>
+    <label for="content">Paste your text:</label><br>
+    <textarea id="content" name="content" placeholder="Paste your text here..." required></textarea><br><br>
+    <label for="pin">4-digit PIN (optional):</label><br>
+    <input id="pin" type="password" name="pin" maxlength="4" pattern="\d*" inputmode="numeric" placeholder="4-digit PIN (optional)"><br><br>
     <button type="submit">Create Paste</button>
   </form>
 </body>
